@@ -1,0 +1,12 @@
+{
+  "name": "cloud-music-webhook",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "pm2 start ./webhook.js --name webhook --watch",
+    "stop": "pm2 stop webhook"
+  },
+  "repository": "https://github.com/shaodushu/cloud-music-webhook.git",
+  "author": "少读书 <17615019466@163.com>",
+  "license": "MIT"
+}
