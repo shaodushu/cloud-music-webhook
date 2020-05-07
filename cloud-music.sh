@@ -9,7 +9,7 @@ git pull origin master
 echo "编译build"
 yarn run build
 echo "开始执行构建前端项目:cloud-music为docker镜像名称 0.1.0为版本号"
-docker build -t cloud-music:1.0 .
+docker build -t cloud-music:0.1.0 .
 echo "停止旧容器 并删除旧容器"
 docker stop cloud-music-container
 docker rm cloud-music-container
