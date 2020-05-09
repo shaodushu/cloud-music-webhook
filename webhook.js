@@ -22,7 +22,7 @@ let server = http.createServer(function (req, res) {
             buffers.push(buffer);
         })
         req.on('end', function (buffer) {
-            let body = Buffer.concat(buffers);
+            let body = Buffer.concat(buffers).toString();
             //github传的值请求事件类型：push事件
             let event = req.headers['x-github-event'];
             //github传递了请求体body,同时传递了签名，需要验证签名是否正确
@@ -39,8 +39,7 @@ let server = http.createServer(function (req, res) {
 
             //自动化部署
             if (event == 'push') {
-                console.log(body)
-                let payload = JSON.parse(JSON.stringify(body));
+                let payload = JSON.parse(body);
                 let name = './' + payload.repository.name + '.sh'
                 //开启子进程自动执行对应的sh部署脚本，提交back就执行 sh back.sh 的子进程
                 let child = spawn('sh', [name])
